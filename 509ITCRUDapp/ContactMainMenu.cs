@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace _509ITCRUDapp
 {
-    public partial class Form1 : Form
+    public partial class ContactMainMenu : Form
     {
-        public Form1()
+        public ContactMainMenu()
         {
             InitializeComponent();
         }
