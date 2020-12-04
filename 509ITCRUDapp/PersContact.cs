@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _509ITCRUDapp
 {
-    public class pers_contact :contact
+    public class PersContact :Contact
     {
         public string phone_number { get; set; }
     }

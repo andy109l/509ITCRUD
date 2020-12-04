@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _509ITCRUDapp
 {
-    public class busi_contact : contact
+    public class BusiContact : Contact
     {
         public string company { get; set; }
         public string business_phone_number { get; set; }

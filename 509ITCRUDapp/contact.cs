@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace _509ITCRUDapp
 {
-    public abstract class contact
+    public abstract class Contact
     {
         public int id { get; set; }
         public string first_name { get; set; }
