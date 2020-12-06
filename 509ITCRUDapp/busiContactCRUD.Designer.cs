@@ -69,6 +69,7 @@
             this.dgvBusi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBusi.Size = new System.Drawing.Size(1231, 262);
             this.dgvBusi.TabIndex = 0;
+            this.dgvBusi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBusi_CellClick);
             // 
             // btnAddNewBusi
             // 
@@ -78,15 +79,18 @@
             this.btnAddNewBusi.TabIndex = 1;
             this.btnAddNewBusi.Text = "Add New";
             this.btnAddNewBusi.UseVisualStyleBackColor = true;
+            this.btnAddNewBusi.Click += new System.EventHandler(this.btnAddNewBusi_Click);
             // 
             // btnSaveNewBusi
             // 
-            this.btnSaveNewBusi.Location = new System.Drawing.Point(1117, 63);
+            this.btnSaveNewBusi.Enabled = false;
+            this.btnSaveNewBusi.Location = new System.Drawing.Point(1117, 70);
             this.btnSaveNewBusi.Name = "btnSaveNewBusi";
             this.btnSaveNewBusi.Size = new System.Drawing.Size(126, 45);
             this.btnSaveNewBusi.TabIndex = 2;
             this.btnSaveNewBusi.Text = "Save New";
             this.btnSaveNewBusi.UseVisualStyleBackColor = true;
+            this.btnSaveNewBusi.Click += new System.EventHandler(this.btnSaveNewBusi_Click);
             // 
             // btnRefreshBusi
             // 
@@ -100,13 +104,13 @@
             // 
             // btnUpdateSelBusi
             // 
-            this.btnUpdateSelBusi.Enabled = false;
             this.btnUpdateSelBusi.Location = new System.Drawing.Point(906, 12);
             this.btnUpdateSelBusi.Name = "btnUpdateSelBusi";
             this.btnUpdateSelBusi.Size = new System.Drawing.Size(172, 45);
             this.btnUpdateSelBusi.TabIndex = 4;
             this.btnUpdateSelBusi.Text = "Update Selelected";
             this.btnUpdateSelBusi.UseVisualStyleBackColor = true;
+            this.btnUpdateSelBusi.Click += new System.EventHandler(this.btnUpdateSelBusi_Click);
             // 
             // btnSaveSelBusi
             // 
@@ -117,16 +121,17 @@
             this.btnSaveSelBusi.TabIndex = 5;
             this.btnSaveSelBusi.Text = "Save Selected";
             this.btnSaveSelBusi.UseVisualStyleBackColor = true;
+            this.btnSaveSelBusi.Click += new System.EventHandler(this.btnSaveSelBusi_Click);
             // 
             // btnDeleteSelBusi
             // 
-            this.btnDeleteSelBusi.Enabled = false;
             this.btnDeleteSelBusi.Location = new System.Drawing.Point(906, 117);
             this.btnDeleteSelBusi.Name = "btnDeleteSelBusi";
             this.btnDeleteSelBusi.Size = new System.Drawing.Size(172, 45);
             this.btnDeleteSelBusi.TabIndex = 6;
             this.btnDeleteSelBusi.Text = "Delete Selected";
             this.btnDeleteSelBusi.UseVisualStyleBackColor = true;
+            this.btnDeleteSelBusi.Click += new System.EventHandler(this.btnDeleteSelBusi_Click);
             // 
             // tbFirstNameBusi
             // 

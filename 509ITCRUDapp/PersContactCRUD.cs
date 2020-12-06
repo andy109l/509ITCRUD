@@ -44,6 +44,7 @@ namespace _509ITCRUDapp
             btnUpdateSel.Enabled = false;
             btnDeleteSel.Enabled = false;
             btnSaveNew.Enabled = true;
+            btnAddNew.Enabled = false;
             tbFirstNamePers.Text = String.Empty;
             tbLastNamePers.Text = String.Empty;
             tbEmailPers.Text = String.Empty;
@@ -78,7 +79,10 @@ namespace _509ITCRUDapp
             tbCountryPers.Enabled = false;
             btnUpdateSel.Enabled = true;
             btnDeleteSel.Enabled = true;
+            btnAddNew.Enabled = true;
             btnSaveNew.Enabled = false;
+
+            dgvPers.DataSource = dbConn.getAllPersonal();
         }
 
         private void dgvPers_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -92,6 +96,72 @@ namespace _509ITCRUDapp
             tbAddressLine2Pers.Text = dgvPers.SelectedCells[6].Value.ToString();
             tbPostcodePers.Text = dgvPers.SelectedCells[7].Value.ToString();
             tbCountryPers.Text = dgvPers.SelectedCells[8].Value.ToString();
+        }
+
+        private void btnUpdateSel_Click(object sender, EventArgs e)
+        {
+            tbFirstNamePers.Enabled = true;
+            tbLastNamePers.Enabled = true;
+            tbEmailPers.Enabled = true;
+            tbPhonePers.Enabled = true;
+            tbAddressLine1Pers.Enabled = true;
+            tbAddressLine2Pers.Enabled = true;
+            tbPostcodePers.Enabled = true;
+            tbCountryPers.Enabled = true;
+            btnUpdateSel.Enabled = false;
+            btnDeleteSel.Enabled = true;
+            btnSaveSel.Enabled = true;
+            btnAddNew.Enabled = false;
+
+        }
+
+        private void btnSaveSel_Click(object sender, EventArgs e)
+        {
+            int indx = Int32.Parse(dgvPers.SelectedCells[0].Value.ToString());
+            PersContact personalContact = new PersContact();
+            personalContact.id = indx;
+            personalContact.first_name = tbFirstNamePers.Text;
+            personalContact.last_name = tbLastNamePers.Text;
+            personalContact.email = tbEmailPers.Text;
+            personalContact.phone_number = tbPhonePers.Text;
+            personalContact.address_line_1 = tbAddressLine1Pers.Text;
+            personalContact.address_line_2 = tbAddressLine2Pers.Text;
+            personalContact.postcode = tbPostcodePers.Text;
+            personalContact.country = tbCountryPers.Text;
+
+            dbConn.UpdatePersonal(personalContact);
+            dgvPers.DataSource = dbConn.getAllPersonal();
+
+            tbFirstNamePers.Enabled = false;
+            tbLastNamePers.Enabled = false;
+            tbEmailPers.Enabled = false;
+            tbPhonePers.Enabled = false;
+            tbAddressLine1Pers.Enabled = false;
+            tbAddressLine2Pers.Enabled = false;
+            tbPostcodePers.Enabled = false;
+            tbCountryPers.Enabled = false;
+            btnUpdateSel.Enabled = true;
+            btnDeleteSel.Enabled = true;
+            btnAddNew.Enabled = true;
+            btnSaveSel.Enabled = false;  
+
+
+        }
+
+        private void btnDeleteSel_Click(object sender, EventArgs e)
+        {
+            string message = "Are you certain you want to DELETE this contact?";
+            string caption = "Do you want to DELETE the contact with ID of ?" + Int32.Parse(dgvPers.SelectedCells[0].Value.ToString());
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult outcome;
+
+            outcome = MessageBox.Show(message, caption, buttons);
+            if (outcome == DialogResult.Yes)
+            {
+                dbConn.DeletePersonal(Int32.Parse(dgvPers.SelectedCells[0].Value.ToString()));
+
+                dgvPers.DataSource = dbConn.getAllPersonal();
+            }
         }
     }
 }

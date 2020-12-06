@@ -127,7 +127,7 @@ namespace _509ITCRUDapp
                     row["Address line 2"] = item.address_line_2;
                     row["Postcode"] = item.postcode;
                     row["Country"] = item.country;
-                    row["Company"] = item.country;
+                    row["Company"] = item.company;
 
                     businessContactDt.Rows.Add(row);
                 }
@@ -168,7 +168,7 @@ namespace _509ITCRUDapp
                 using (var cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "CALL add_personal(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9);";
+                    cmd.CommandText = "CALL add_business(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9);";
                     cmd.Parameters.AddWithValue("p1", businessContact.first_name);
                     cmd.Parameters.AddWithValue("p2", businessContact.last_name);
                     cmd.Parameters.AddWithValue("p3", businessContact.email);
@@ -216,7 +216,7 @@ namespace _509ITCRUDapp
                 using (var cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "CALL update_personal(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10);";
+                    cmd.CommandText = "CALL update_business(@p1,@p2,@p3,@p4,@p5,@p6,@p7,@p8,@p9,@p10);";
                     cmd.Parameters.AddWithValue("p1", businessContact.id);
                     cmd.Parameters.AddWithValue("p2", businessContact.first_name);
                     cmd.Parameters.AddWithValue("p3", businessContact.last_name);

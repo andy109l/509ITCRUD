@@ -108,6 +108,7 @@
             this.btnUpdateSel.TabIndex = 4;
             this.btnUpdateSel.Text = "Update Selected";
             this.btnUpdateSel.UseVisualStyleBackColor = true;
+            this.btnUpdateSel.Click += new System.EventHandler(this.btnUpdateSel_Click);
             // 
             // btnDeleteSel
             // 
@@ -117,6 +118,7 @@
             this.btnDeleteSel.TabIndex = 5;
             this.btnDeleteSel.Text = "Delete Selected";
             this.btnDeleteSel.UseVisualStyleBackColor = true;
+            this.btnDeleteSel.Click += new System.EventHandler(this.btnDeleteSel_Click);
             // 
             // btnSaveSel
             // 
@@ -127,6 +129,7 @@
             this.btnSaveSel.TabIndex = 6;
             this.btnSaveSel.Text = "Save Selected";
             this.btnSaveSel.UseVisualStyleBackColor = true;
+            this.btnSaveSel.Click += new System.EventHandler(this.btnSaveSel_Click);
             // 
             // tbFirstNamePers
             // 
