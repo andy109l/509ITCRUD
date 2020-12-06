@@ -63,6 +63,8 @@ namespace _509ITCRUDapp
                     row["Address line 2"] = item.address_line_2;
                     row["Postcode"] = item.postcode;
                     row["Country"] = item.country;
+
+                    personalContactDt.Rows.Add(row);
                 }
 
                 return personalContactDt;
@@ -126,6 +128,8 @@ namespace _509ITCRUDapp
                     row["Postcode"] = item.postcode;
                     row["Country"] = item.country;
                     row["Company"] = item.country;
+
+                    businessContactDt.Rows.Add(row);
                 }
                 return businessContactDt;
             }

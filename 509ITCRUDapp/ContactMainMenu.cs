@@ -16,5 +16,17 @@ namespace _509ITCRUDapp
         {
             InitializeComponent();
         }
+
+        private void btn_pers_contacts_click(object sender, EventArgs e)
+        {
+            PersContactCRUD personalEditor = new PersContactCRUD();
+            personalEditor.Show();
+        }
+
+        private void btn_busi_contacts_click(object sender, EventArgs e)
+        {
+            BusiContactCRUD businessEditor = new BusiContactCRUD();
+            businessEditor.Show();
+        }
     }
 }

@@ -67,6 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusiContact.cs" />
+    <Compile Include="BusiContactCRUD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BusiContactCRUD.Designer.cs">
+      <DependentUpon>BusiContactCRUD.cs</DependentUpon>
+    </Compile>
     <Compile Include="Contact.cs" />
     <Compile Include="ContactMainMenu.cs">
       <SubType>Form</SubType>
@@ -76,10 +82,22 @@
     </Compile>
     <Compile Include="DbConn.cs" />
     <Compile Include="PersContact.cs" />
+    <Compile Include="PersContactCRUD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersContactCRUD.Designer.cs">
+      <DependentUpon>PersContactCRUD.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="BusiContactCRUD.resx">
+      <DependentUpon>BusiContactCRUD.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ContactMainMenu.resx">
       <DependentUpon>ContactMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersContactCRUD.resx">
+      <DependentUpon>PersContactCRUD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
