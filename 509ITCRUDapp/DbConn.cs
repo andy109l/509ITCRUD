@@ -82,27 +82,29 @@ namespace _509ITCRUDapp
                 DataTable businessContactDt = new DataTable();
                 List<BusiContact> busiContacts = new List<BusiContact>();
                 using (var cmd = new MySqlCommand("CALL select_all_business();", conn))
-                   using (var reader = cmd.ExecuteReader())
-                    while (reader.Read())
+                {
+                    using (var reader = cmd.ExecuteReader())
                     {
-
-                        busiContacts.Add(new BusiContact
+                        while (reader.Read())
                         {
-                            id = reader.GetInt32(0),
-                            first_name = reader.GetString(1),
-                            last_name = reader.GetString(2),
-                            email = reader.GetString(3),
-                            address_line_1 = reader.GetString(5),
-                            address_line_2 = reader.GetString(6),
-                            postcode = reader.GetString(7),
-                            country = reader.GetString(8),
-                            company = reader.GetString(9),
-                            business_phone_number = reader.GetString(10)
-                        });
-
-
-
+                            busiContacts.Add(new BusiContact
+                            {
+                                id = reader.GetInt32(0),
+                                first_name = reader.GetString(1),
+                                last_name = reader.GetString(2),
+                                email = reader.GetString(3),
+                                address_line_1 = reader.GetString(5),
+                                address_line_2 = reader.GetString(6),
+                                postcode = reader.GetString(7),
+                                country = reader.GetString(8),
+                                company = reader.GetString(9),
+                                business_phone_number = reader.GetString(10)
+                            });
+                        }
                     }
+                       
+                }
+                   
                 businessContactDt.Columns.Add("Personal ID");
                 businessContactDt.Columns.Add("First Name");
                 businessContactDt.Columns.Add("Last Name");
@@ -136,11 +138,11 @@ namespace _509ITCRUDapp
         }
 
 
-        public void InsertPersoanl(PersContact personalContact)
+        public async void InsertPersoanl(PersContact personalContact)
         {
             using (var conn = new MySqlConnection(connString))
             {
-                conn.Open();
+                await conn.OpenAsync();
                 using (var cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
@@ -153,18 +155,18 @@ namespace _509ITCRUDapp
                     cmd.Parameters.AddWithValue("p6", personalContact.address_line_2);
                     cmd.Parameters.AddWithValue("p7", personalContact.postcode);
                     cmd.Parameters.AddWithValue("p8", personalContact.country);
-                    cmd.ExecuteNonQuery();
+                    await cmd.ExecuteNonQueryAsync();
                 }
             }
 
         }
 
 
-        public void InsertBusiness(BusiContact businessContact)
+        public async void InsertBusiness(BusiContact businessContact)
         {
             using (var conn = new MySqlConnection(connString))
             {
-                conn.Open();
+                await conn.OpenAsync();
                 using (var cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
@@ -178,18 +180,18 @@ namespace _509ITCRUDapp
                     cmd.Parameters.AddWithValue("p7", businessContact.country);
                     cmd.Parameters.AddWithValue("p8", businessContact.company);
                     cmd.Parameters.AddWithValue("p9", businessContact.business_phone_number);
-                    cmd.ExecuteNonQuery();
+                    await cmd.ExecuteNonQueryAsync();
                 }
             }
 
         }
 
 
-        public void UpdatePersonal (PersContact personalContact)
+        public async void UpdatePersonal (PersContact personalContact)
         {
             using (var conn = new MySqlConnection(connString))
             {
-                conn.Open();
+                await conn.OpenAsync();
                 using (var cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
@@ -203,16 +205,16 @@ namespace _509ITCRUDapp
                     cmd.Parameters.AddWithValue("p7", personalContact.address_line_2);
                     cmd.Parameters.AddWithValue("p8", personalContact.postcode);
                     cmd.Parameters.AddWithValue("p9", personalContact.country);
-                    cmd.ExecuteNonQuery();
+                    await cmd.ExecuteNonQueryAsync();
                 }
             }
         }
 
-        public void UpdateBusiness(BusiContact businessContact)
+        public async void UpdateBusiness(BusiContact businessContact)
         {
             using (var conn = new MySqlConnection(connString))
             {
-                conn.Open();
+                await conn.OpenAsync();
                 using (var cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
@@ -227,37 +229,37 @@ namespace _509ITCRUDapp
                     cmd.Parameters.AddWithValue("p8", businessContact.country);
                     cmd.Parameters.AddWithValue("p9", businessContact.company);
                     cmd.Parameters.AddWithValue("p10", businessContact.business_phone_number);
-                    cmd.ExecuteNonQuery();
+                    await cmd.ExecuteNonQueryAsync();
                 }
             }
         }
 
-        public void DeletePersonal(int id)
+        public async void DeletePersonal(int id)
         {
             using (var conn = new MySqlConnection(connString))
             {
-                conn.Open();
+                await conn.OpenAsync();
                 using (var cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
                     cmd.CommandText = "CALL delete_personal(@p1);";
                     cmd.Parameters.AddWithValue("p1", id);
-                    cmd.ExecuteNonQuery();
+                     await cmd.ExecuteNonQueryAsync();
                 }
             }
         }
 
-        public void DeleteBusiness(int id)
+        public async void DeleteBusiness(int id)
         {
             using (var conn = new MySqlConnection(connString))
             {
-                conn.Open();
+                await conn.OpenAsync();
                 using (var cmd = new MySqlCommand())
                 {
                     cmd.Connection = conn;
                     cmd.CommandText = "CALL delete_business(@p1);";
                     cmd.Parameters.AddWithValue("p1", id);
-                    cmd.ExecuteNonQuery();
+                    await cmd.ExecuteNonQueryAsync();
                 }
             }
         }
