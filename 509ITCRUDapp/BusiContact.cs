@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace _509ITCRUDapp
 {
-    public class busi_contact : contact
+    /// <summary>
+    /// Properties in this class are assigned the data from the database during the getAllBusiness method
+    /// </summary>
+    public class BusiContact : Contact
     {
         public string company { get; set; }
         public string business_phone_number { get; set; }
