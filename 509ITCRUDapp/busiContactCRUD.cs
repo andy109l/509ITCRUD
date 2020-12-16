@@ -18,17 +18,29 @@ namespace _509ITCRUDapp
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// on load populates the dgvBusi with data retrieved from the database using the method getAllBusiness
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BusiContactCRUD_Load(object sender, EventArgs e)
         {
             dgvBusi.DataSource = dbConn.getAllBusiness();
         }
-
+        /// <summary>
+        /// on click populates/updates the dgvBusi with data retrieved from the database using the method getAllBusiness
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRefreshBusi_Click(object sender, EventArgs e)
         {
             dgvBusi.DataSource = dbConn.getAllBusiness();
         }
-
+        /// <summary>
+        /// on click toggles all the required buttons and text boxes used to add new business contact, resets the text boxes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddNewBusi_Click(object sender, EventArgs e)
         {
             tbFirstNameBusi.Enabled = true;
@@ -54,7 +66,13 @@ namespace _509ITCRUDapp
             tbCountryBusi.Text = String.Empty;
             tbCompanyBusi.Text = String.Empty;
         }
-
+        /// <summary>
+        /// on click toggles all the required buttons and text boxes used to save new business contact, resets the text boxes
+        /// saves contacts in the database
+        /// reloads the data in the dgvBusi
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSaveNewBusi_Click(object sender, EventArgs e)
         {
             BusiContact businessContact = new BusiContact();
@@ -67,7 +85,9 @@ namespace _509ITCRUDapp
             businessContact.postcode = tbPostcodeBusi.Text;
             businessContact.country = tbCountryBusi.Text;
             businessContact.company = tbCompanyBusi.Text;
+
             dbConn.InsertBusiness(businessContact);
+
             tbFirstNameBusi.Enabled = false;
             tbLastNameBusi.Enabled = false;
             tbEmailBusi.Enabled = false;
@@ -84,7 +104,11 @@ namespace _509ITCRUDapp
 
             dgvBusi.DataSource = dbConn.getAllBusiness();
         }
-
+        /// <summary>
+        ///  on click populates the text boxes with the data from selected dgvBusi row 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvBusi_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int indx = Int32.Parse(dgvBusi.SelectedCells[0].Value.ToString());
@@ -98,7 +122,11 @@ namespace _509ITCRUDapp
             tbCountryBusi.Text = dgvBusi.SelectedCells[8].Value.ToString();
             tbCompanyBusi.Text = dgvBusi.SelectedCells[9].Value.ToString();
         }
-
+        /// <summary>
+        /// on click toggles all the required buttons and text boxes used to update selected business contact,
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUpdateSelBusi_Click(object sender, EventArgs e)
         {
             tbFirstNameBusi.Enabled = true;
@@ -115,7 +143,13 @@ namespace _509ITCRUDapp
             btnSaveSelBusi.Enabled = true;
             btnAddNewBusi.Enabled = false;
         }
-
+        /// <summary>
+        /// on click toggles all the required buttons and text boxes used to save selected business contact
+        /// saves the updated contacts in the database
+        /// reloads the data in the dgvBusi
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSaveSelBusi_Click(object sender, EventArgs e)
         {
             int indx = Int32.Parse(dgvBusi.SelectedCells[0].Value.ToString());
@@ -148,7 +182,13 @@ namespace _509ITCRUDapp
             btnAddNewBusi.Enabled = true;
             btnSaveSelBusi.Enabled = false;
         }
-
+        /// <summary>
+        /// on click displays a pop-up to confirm, if selected contact should be deleted
+        /// if confirmed deletes selected business contact
+        /// reloads the data in the dgvBusi
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDeleteSelBusi_Click(object sender, EventArgs e)
         {
             string message = "Are you certain you want to DELETE this contact?";

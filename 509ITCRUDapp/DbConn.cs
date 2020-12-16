@@ -11,7 +11,11 @@ namespace _509ITCRUDapp
      public class DbConn
     {
         private string connString = "Server=localhost;User ID=root ;Password=; Database=509itcrudsys";
-
+        /// <summary>
+        /// Creates the connection to database and retrieves personal contacts data using select_all_personal stored procedure
+        /// returns the data formatted as the DataTable
+        /// </summary>
+        /// <returns></returns>
         public DataTable getAllPersonal()
         {
             using (var conn = new MySqlConnection(connString))
@@ -73,7 +77,11 @@ namespace _509ITCRUDapp
 
 
 
-
+        /// <summary>
+        /// Creates the connection to database and retrieves business contacts data using select_all_business stored procedure
+        /// returns the data formatted as the DataTable
+        /// </summary>
+        /// <returns></returns>
         public DataTable getAllBusiness()
         {
             using (var conn = new MySqlConnection(connString))
@@ -136,8 +144,10 @@ namespace _509ITCRUDapp
                 return businessContactDt;
             }
         }
-
-
+        /// <summary>
+        /// Insets the personal contact data from the object into database using the add_personal stored procedure
+        /// </summary>
+        /// <param name="personalContact"></param>
         public async void InsertPersoanl(PersContact personalContact)
         {
             using (var conn = new MySqlConnection(connString))
@@ -161,7 +171,10 @@ namespace _509ITCRUDapp
 
         }
 
-
+        /// <summary>
+        /// Insets the business contact data from the object into database using the add_business stored procedure
+        /// </summary>
+        /// <param name="businessContact"></param>
         public async void InsertBusiness(BusiContact businessContact)
         {
             using (var conn = new MySqlConnection(connString))
@@ -186,7 +199,10 @@ namespace _509ITCRUDapp
 
         }
 
-
+        /// <summary>
+        /// Updates the personal contact data in the database based on the id, using the update_personal stored procedure
+        /// </summary>
+        /// <param name="personalContact"></param>
         public async void UpdatePersonal (PersContact personalContact)
         {
             using (var conn = new MySqlConnection(connString))
@@ -209,7 +225,10 @@ namespace _509ITCRUDapp
                 }
             }
         }
-
+        /// <summary>
+        /// Updates the business contact data in the database based on the id, using the update_business stored procedure
+        /// </summary>
+        /// <param name="businessContact"></param>
         public async void UpdateBusiness(BusiContact businessContact)
         {
             using (var conn = new MySqlConnection(connString))
@@ -233,7 +252,10 @@ namespace _509ITCRUDapp
                 }
             }
         }
-
+        /// <summary>
+        /// Deletes the personal contact data in the database based on the id, using the delete_business stored procedure
+        /// </summary>
+        /// <param name="id"></param>
         public async void DeletePersonal(int id)
         {
             using (var conn = new MySqlConnection(connString))
@@ -248,7 +270,10 @@ namespace _509ITCRUDapp
                 }
             }
         }
-
+        /// <summary>
+        /// Deletes the business contact data in the database based on the id, using the delete_business stored procedure
+        /// </summary>
+        /// <param name="id"></param>
         public async void DeleteBusiness(int id)
         {
             using (var conn = new MySqlConnection(connString))

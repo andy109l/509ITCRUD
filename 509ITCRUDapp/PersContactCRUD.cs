@@ -20,17 +20,29 @@ namespace _509ITCRUDapp
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// on load populates the dgvPers with data retrieved from the database using the method getAllPersonal
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PersContactCRUD_Load(object sender, EventArgs e)
         {
             dgvPers.DataSource = dbConn.getAllPersonal();
         }
-
+        /// <summary>
+        /// on click populates/updates the dgvPers with data retrieved from the database using the method getAllPersonal
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             dgvPers.DataSource = dbConn.getAllPersonal();
         }
-
+        /// <summary>
+        /// on click toggles all the required buttons and text boxes used to add new personal contact, resets the text boxes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnAddNew_Click(object sender, EventArgs e)
         {
             tbFirstNamePers.Enabled = true;
@@ -56,7 +68,13 @@ namespace _509ITCRUDapp
 
 
         }
-
+        /// <summary>
+        /// on click toggles all the required buttons and text boxes used to save new personal contact, resets the text boxes
+        /// saves contacts in the database
+        /// reloads the data in the dgvPers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSaveNew_Click(object sender, EventArgs e)
         {
             PersContact personalContact = new PersContact();
@@ -84,7 +102,11 @@ namespace _509ITCRUDapp
 
             dgvPers.DataSource = dbConn.getAllPersonal();
         }
-
+        /// <summary>
+        /// on click populates the text boxes with the data from selected dgvPers row 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dgvPers_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int indx = Int32.Parse(dgvPers.SelectedCells[0].Value.ToString());
@@ -97,7 +119,11 @@ namespace _509ITCRUDapp
             tbPostcodePers.Text = dgvPers.SelectedCells[7].Value.ToString();
             tbCountryPers.Text = dgvPers.SelectedCells[8].Value.ToString();
         }
-
+        /// <summary>
+        /// on click toggles all the required buttons and text boxes used to update selected personal contact
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnUpdateSel_Click(object sender, EventArgs e)
         {
             tbFirstNamePers.Enabled = true;
@@ -114,7 +140,13 @@ namespace _509ITCRUDapp
             btnAddNew.Enabled = false;
 
         }
-
+        /// <summary>
+        /// on click toggles all the required buttons and text boxes used to save selected personal contact
+        /// saves the updated contacts in the database
+        /// reloads the data in the dgvPers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnSaveSel_Click(object sender, EventArgs e)
         {
             int indx = Int32.Parse(dgvPers.SelectedCells[0].Value.ToString());
@@ -147,11 +179,17 @@ namespace _509ITCRUDapp
 
 
         }
-
+        /// <summary>
+        /// on click displays a pop-up to confirm, if selected contact should be deleted
+        /// if confirmed deletes selected personal contact
+        /// reloads the data in the dgvPers
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnDeleteSel_Click(object sender, EventArgs e)
         {
             string message = "Are you certain you want to DELETE this contact?";
-            string caption = "Do you want to DELETE the contact with ID of ?" + Int32.Parse(dgvPers.SelectedCells[0].Value.ToString());
+            string caption = "Do you want to DELETE the contact with ID of " + Int32.Parse(dgvPers.SelectedCells[0].Value.ToString());
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult outcome;
 

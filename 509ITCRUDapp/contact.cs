@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace _509ITCRUDapp
 {
+    /// <summary>
+    /// Provides a base line for PersContact and BusiContact classes
+    /// </summary>
     public abstract class Contact
     {
         public int id { get; set; }

@@ -58,6 +58,8 @@
             // 
             // dgvBusi
             // 
+            this.dgvBusi.AllowUserToAddRows = false;
+            this.dgvBusi.AllowUserToDeleteRows = false;
             this.dgvBusi.AllowUserToResizeColumns = false;
             this.dgvBusi.AllowUserToResizeRows = false;
             this.dgvBusi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
